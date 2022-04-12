@@ -1,0 +1,42 @@
+.badge {
+  @extend .small;
+  @extend .no-select;
+
+  display: inline-block;
+
+  // Sizes
+  &-small {
+    @extend .px-50;
+    @extend .radius-small;
+
+    line-height: 1.5em;
+  }
+
+  &-medium {
+    @extend .px-50;
+    @extend .py-25;
+    @extend .radius-base;
+  }
+}
+
+@each $name, $code in $theme-colors {
+  .badge-#{$name} {
+    background: $code;
+
+    @if $name == 'light' {
+      color: map-get($colors, 'black');
+    } @else {
+      color: map-get($colors, 'white');
+    }
+  }
+
+  .badge-#{$name}-muted {
+    background: rgba($code, .3);
+
+    @if $name == 'light' {
+      color: map-get($colors, 'black');
+    } @else {
+      color: map-get($colors, 'white');
+    }
+  }
+}
